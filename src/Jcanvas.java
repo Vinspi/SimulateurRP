@@ -1,5 +1,8 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
 /**
@@ -17,8 +20,13 @@ public class Jcanvas extends JPanel {
     @Override
     public void paint(Graphics graphics) {
         super.paint(graphics);
-        graphics.setColor(Color.cyan);
-        graphics.fillRect(0,0,500,500);
+        try {
+            Image backgroundImage = ImageIO.read(new File(Const.RP4_Background));
+            graphics.drawImage(backgroundImage, 0, 0, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         for(Drawable d : drawables)
             d.draw(graphics);
     }

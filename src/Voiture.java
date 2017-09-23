@@ -3,11 +3,27 @@
  */
 public class Voiture extends Vehicule {
 
-    int pos;
+
+
+    private int pos;
     public int taille = 2;
 
-    void avancer(){
 
+    public int getPos() {
+        return pos;
+    }
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
+
+
+    public Voiture(int posInit){
+        this.pos = posInit;
+    }
+
+
+    void avancer(){
+        this.pos++;
     }
 
 }

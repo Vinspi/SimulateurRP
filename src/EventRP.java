@@ -13,7 +13,7 @@ public class EventRP {
         this.event = event;
     }
 
-    public EventRP(ConcurrentLinkedQueue voie, String event){
+    public EventRP(ConcurrentLinkedQueue<Vehicule> voie, String event){
         this.o = voie;
         this.event = event;
     }

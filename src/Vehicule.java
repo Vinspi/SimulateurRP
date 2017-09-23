@@ -3,8 +3,16 @@
  */
 public abstract class Vehicule {
 
-    int pos;
+    private int pos;
     public int taille;
+
+
+    public int getPos() {
+        return pos;
+    }
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
 
     void avancer(){};
 

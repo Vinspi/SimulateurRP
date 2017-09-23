@@ -9,7 +9,9 @@ public class Hand {
         Modele modele = new Modele();
         Controleur controleur = new Controleur(modele);
 
-        System.out.println("coucou");
+
+        VueRP4 vue = new VueRP4();
+
 
     }
 }

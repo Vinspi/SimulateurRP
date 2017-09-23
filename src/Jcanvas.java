@@ -11,7 +11,7 @@ public class Jcanvas extends JPanel {
 
     public Jcanvas() {
         this.drawables = new LinkedList<>();
-        this.setSize(500,500);
+        this.setSize(800,500);
     }
 
     @Override

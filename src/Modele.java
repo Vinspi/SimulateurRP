@@ -1,3 +1,4 @@
+import javax.naming.ldap.Control;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -58,6 +59,7 @@ public class Modele extends Observable implements Observer {
         this.rondpoint = rondpoint;
     }
 
+
     public ArrayList<Vehicule> getVhRP() {
         return vhRP;
     }
@@ -82,10 +84,10 @@ public class Modele extends Observable implements Observer {
 
 
     //Ajoute un véhicule dans le fifo de la voie "voie".
-    void addVehiculeToVoie(Vehicule vh, ConcurrentLinkedQueue<Vehicule> voie){
+    private void addVehiculeToVoie(Vehicule vh, ConcurrentLinkedQueue<Vehicule> voie){
 
         voie.add(vh);
-        System.out.println("Voiture ajouté à la voie");
+        System.out.println("------------- Véhicule ajouté à la voie :" + voie.element() + "------------");
     }
 
 
@@ -93,7 +95,8 @@ public class Modele extends Observable implements Observer {
     //Deux solutions afin de localiser le véhicule :
     // -> associer la pos -X au véhicule, avec X la première case sur laquelle le véhicule va passer en s'engageant dans le rond-point. /!\ A la fonction drawVehicule qui devra dessiner les vh des fifo en fonction de leur position dans la fifo et non de pos.
     // -> switch case sur les voies.
-    void insérerVehiculeDansRP(ConcurrentLinkedQueue<Vehicule> voie){
+    private void insérerVehiculeDansRP(ConcurrentLinkedQueue<Vehicule> voie){
+
 
         int posInit = 0;
         ConcurrentLinkedQueue<Vehicule> vhVoie = vhVoie1;
@@ -115,14 +118,14 @@ public class Modele extends Observable implements Observer {
 
         vhVoie.element().setPos(posInit);
         vhRP.add(vhVoie.element());
-        for(int k = 0; k < voie.element().taille; k++){
-            rondpoint[(posInit+k)%100] = voie.element();
+        for(int k = 0; k < voie.element().getTaille(); k++){
+            rondpoint[Math.floorMod((posInit+k),100)] = voie.element();
         }
 
         //On le retire du fifo de sa voie.
         vhVoie.poll();
 
-        System.out.println("Voiture ajouté au RP");
+        System.out.println("------------ Véhicule inséré dans le rond-point.--------------");
 
     }
 
@@ -130,8 +133,43 @@ public class Modele extends Observable implements Observer {
 
 
     @Override
+    @SuppressWarnings("unchecked")
     public void update(Observable observable, Object o) {
 
-        System.out.println("coucou");
+
+        if(o instanceof EventRP){
+
+            switch (((EventRP) o).event) {
+                case "ajout":
+                    addVehiculeToVoie(((Vehicule) ((Controleur.CoupleVV) ((EventRP) o).o).o), ((Controleur.CoupleVV) ((EventRP) o).o).voie);
+                    break;
+
+                case "deplacement":
+                    rondpoint[Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + ((Vehicule) ((EventRP) o).o).getTaille(), 100)] = ((Vehicule) ((EventRP) o).o);
+                    rondpoint[((Vehicule) ((EventRP) o).o).getPos()] = null;
+                    ((Vehicule) ((EventRP) o).o).setPos(Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + 1, 100));
+                    break;
+
+                case "sortie":
+                    for (int i = 0; i < ((Vehicule) ((EventRP) o).o).getTaille(); i++) {
+                        rondpoint[((Vehicule) ((EventRP) o).o).getPos() + i] = null;
+                    }
+                    break;
+
+                default:
+                    break;
+
+
+            }
+
+        }
+        else if (o.equals(vhVoie1) || o.equals(vhVoie2) || o.equals(vhVoie3) || o.equals(vhVoie4)){
+            insérerVehiculeDansRP((ConcurrentLinkedQueue<Vehicule>)o);
+        }
+
+
+
+        setChanged();
+        notifyObservers();
     }
 }

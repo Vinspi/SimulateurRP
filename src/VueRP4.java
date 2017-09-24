@@ -26,19 +26,19 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
 
         this.ajouteVoieSud = new JButton("voie Sud");
-        this.ajouteVoieSud.setName(Const.ADD_Vehicule_V1);
+        this.ajouteVoieSud.setName(Const.ADD_Vehicule_V1_To_V1);
         this.ajouteVoieSud.addActionListener(this);
 
         this.ajouteVoieNord = new JButton("voie Nord");
-        this.ajouteVoieNord.setName(Const.ADD_Vehicule_V2);
+        this.ajouteVoieNord.setName(Const.ADD_Vehicule_V2_To_V2);
         this.ajouteVoieNord.addActionListener(this);
 
         this.ajouteVoieEst = new JButton("voie Est");
-        this.ajouteVoieEst.setName(Const.ADD_Vehicule_V3);
+        this.ajouteVoieEst.setName(Const.ADD_Vehicule_V3_To_V3);
         this.ajouteVoieEst.addActionListener(this);
 
         this.ajouteVoieOuest = new JButton("voie Ouest");
-        this.ajouteVoieOuest.setName(Const.ADD_Vehicule_V4);
+        this.ajouteVoieOuest.setName(Const.ADD_Vehicule_V4_To_V4);
         this.ajouteVoieOuest.addActionListener(this);
 
         this.panelBoutons = new JPanel(new GridLayout(0,1));

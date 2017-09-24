@@ -1,3 +1,4 @@
+import javax.naming.ldap.Control;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -8,6 +9,9 @@ public class EventRP {
     Object o;
     String event;
 
+
+
+
     public EventRP(Vehicule vh, String event){
         this.o = vh;
         this.event = event;
@@ -15,6 +19,11 @@ public class EventRP {
 
     public EventRP(ConcurrentLinkedQueue<Vehicule> voie, String event){
         this.o = voie;
+        this.event = event;
+    }
+
+    public EventRP(Controleur.CoupleVV coupleVV, String event){
+        this.o = coupleVV;
         this.event = event;
     }
 }

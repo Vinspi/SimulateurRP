@@ -6,7 +6,8 @@ public class Voiture extends Vehicule {
 
 
     private int pos;
-    public int taille = 2;
+    private int taille = 2;
+    private int sortiePrevue;
 
 
     public int getPos() {
@@ -16,14 +17,21 @@ public class Voiture extends Vehicule {
         this.pos = pos;
     }
 
+    public int getSortiePrevue() {
+        return sortiePrevue;
+    }
 
-    public Voiture(int posInit){
+    @Override
+    public int getTaille() {
+        return taille;
+    }
+
+    public Voiture(int posInit, int sortiePrevue){
         this.pos = posInit;
+        this.sortiePrevue = sortiePrevue;
     }
 
 
-    void avancer(){
-        this.pos++;
-    }
+
 
 }

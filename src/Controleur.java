@@ -45,7 +45,7 @@ public class Controleur extends Observable implements Observer {
         };
 
 
-        timer.schedule(timerTask,0, 1000);
+        timer.schedule(timerTask,0, 200);
     }
 
 

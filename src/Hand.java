@@ -3,17 +3,16 @@
  */
 public class Hand {
 
-
     public static void main(String[] args) {
 
         Modele modele = new Modele();
         Controleur controleur = new Controleur(modele);
 
 
-        //VueRP4 vue = new VueRP4();
 
 
-        controleur.update(controleur,"voie1Voiture");
+        VueRP4 vue = new VueRP4();
 
+        vue.addObserver(controleur);
     }
 }

@@ -1,14 +1,15 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
 /**
  * Created by vinspi on 23/09/17.
  */
-public class VueRP4 extends Observable implements Observer{
-    private Image background;
+public class VueRP4 extends Observable implements Observer, ActionListener{
+
     private JButton ajouteVoieSud;
     private JButton ajouteVoieNord;
     private JButton ajouteVoieEst;
@@ -18,31 +19,45 @@ public class VueRP4 extends Observable implements Observer{
     private JPanel panelGeneral;
     private JPanel panelBoutons;
     private BorderLayout layoutgeneral;
+    private BorderLayout layoutBoutons;
 
     public VueRP4() throws HeadlessException {
 
-        this.layoutgeneral = new BorderLayout();
-        this.ajouteVoieSud = new JButton("voie Sud");
-        this.ajouteVoieNord = new JButton("voie Nord");
-        this.ajouteVoieEst = new JButton("voie Est");
-        this.ajouteVoieOuest = new JButton("voie Ouest");
 
-        this.panelBoutons = new JPanel();
+        this.layoutgeneral = new BorderLayout();
+
+        this.ajouteVoieSud = new JButton("voie Sud");
+        this.ajouteVoieSud.setName(Const.ADD_Vehicule_V1);
+        this.ajouteVoieSud.addActionListener(this);
+
+        this.ajouteVoieNord = new JButton("voie Nord");
+        this.ajouteVoieNord.setName(Const.ADD_Vehicule_V2);
+        this.ajouteVoieNord.addActionListener(this);
+
+        this.ajouteVoieEst = new JButton("voie Est");
+        this.ajouteVoieEst.setName(Const.ADD_Vehicule_V3);
+        this.ajouteVoieEst.addActionListener(this);
+
+        this.ajouteVoieOuest = new JButton("voie Ouest");
+        this.ajouteVoieOuest.setName(Const.ADD_Vehicule_V4);
+        this.ajouteVoieOuest.addActionListener(this);
+
+        this.panelBoutons = new JPanel(new GridLayout(0,1));
         this.panelBoutons.add(ajouteVoieSud);
+        this.panelBoutons.add(ajouteVoieNord);
         this.panelBoutons.add(ajouteVoieEst);
         this.panelBoutons.add(ajouteVoieOuest);
-        this.panelBoutons.add(ajouteVoieNord);
+
 
         this.canvas = new Jcanvas();
 
         this.panelGeneral = new JPanel();
+
         this.panelGeneral.setLayout(new BorderLayout());
         this.panelGeneral.add(canvas, BorderLayout.CENTER);
-        this.panelGeneral.add(panelBoutons,BorderLayout.SOUTH);
+        this.panelGeneral.add(panelBoutons,BorderLayout.EAST);
 
-
-
-        this.fenetre = new JFrame();
+        this.fenetre = new JFrame("Simulateur Rond-point 4 voies");
         this.fenetre.setSize(800,600);
         this.fenetre.setVisible(true);
         this.fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,5 +68,12 @@ public class VueRP4 extends Observable implements Observer{
     @Override
     public void update(Observable observable, Object o) {
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String BTN_NAME = ((JButton) e.getSource()).getName();
+        setChanged();
+        notifyObservers(BTN_NAME);
     }
 }

@@ -18,7 +18,17 @@ public class Jcanvas extends JPanel {
 
     public Jcanvas(int sizeW, int sizeH) {
         this.drawables = new LinkedList<>();
+        this.drawables.add(new Voiture(100,2));
         this.setSize(sizeW,sizeH);
+        try {
+            this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP4_Background));
+
+            this.backgroundImage = this.backgroundImage.getScaledInstance(800,800,Image.SCALE_SMOOTH);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -27,16 +37,8 @@ public class Jcanvas extends JPanel {
         System.out.println("paint !");
         super.paint(graphics);
 
-        try {
-            this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP4_Background));
+        graphics.drawImage(this.backgroundImage, 0, 0, null);
 
-            this.backgroundImage = this.backgroundImage.getScaledInstance(800,800,Image.SCALE_SMOOTH);
-            graphics.drawImage(this.backgroundImage, 0, 0, null);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         for(Drawable d : drawables)
             d.draw(graphics);

@@ -18,13 +18,12 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     private Jcanvas canvas;
     private JPanel panelGeneral;
     private JPanel panelBoutons;
-    private BorderLayout layoutgeneral;
-    private BorderLayout layoutBoutons;
+
 
     public VueRP4() throws HeadlessException {
 
 
-        this.layoutgeneral = new BorderLayout();
+
 
         this.ajouteVoieSud = new JButton("voie Sud");
         this.ajouteVoieSud.setName(Const.ADD_Vehicule_V1);
@@ -49,7 +48,9 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.panelBoutons.add(ajouteVoieOuest);
 
 
-        this.canvas = new Jcanvas();
+
+
+        this.canvas = new Jcanvas(800,800);
 
         this.panelGeneral = new JPanel();
 
@@ -57,12 +58,18 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.panelGeneral.add(canvas, BorderLayout.CENTER);
         this.panelGeneral.add(panelBoutons,BorderLayout.EAST);
 
+
+
+        this.panelGeneral.setSize(canvas.getHeight()+panelBoutons.getHeight(),canvas.getWidth()+panelBoutons.getWidth());
+
+
         this.fenetre = new JFrame("Simulateur Rond-point 4 voies");
-        this.fenetre.setSize(800,600);
+        this.fenetre.setSize(915,800);
         this.fenetre.setVisible(true);
         this.fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.fenetre.getContentPane().add(panelGeneral);
+
     }
 
     @Override

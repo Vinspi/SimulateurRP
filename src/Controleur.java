@@ -34,23 +34,27 @@ public class Controleur extends Observable implements Observer {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run(){
-                System.out.println("[Clock] Nombre d'elements dans FifoEvent :" + fifoEvent.size());
-                System.out.println("[Clock] Nombre de voitures circulant dans le rond-point :" + modele.getVhRP().size());
-                for(Vehicule v : modele.getVhRP()){
+                //System.out.println("[Clock] Nombre d'elements dans FifoEvent :" + fifoEvent.size());
+                //System.out.println("[Clock] Nombre de voitures circulant dans le rond-point :" + modele.getVhRP().size());
+                /*for(Vehicule v : modele.getVhRP()){
                     System.out.print("| "+v.getPos() + " ");
-                }
-                System.out.println();
+                }*/
+                //System.out.println();
                 verifFifoEvent();
             }
         };
 
 
+
         timer.schedule(timerTask,0, 200);
+
     }
 
 
     @SuppressWarnings("unchecked")
     private void verifFifoEvent() {
+
+        //double debut = System.nanoTime();
 
         int size = fifoEvent.size();
         ConcurrentLinkedQueue<EventRP> tmp = new ConcurrentLinkedQueue<>();  //Fifo dans laquelle on place les potentielles nouvelles demandes d'insertion reçues après l'insertion des véhicules des différentes voies.
@@ -124,6 +128,9 @@ public class Controleur extends Observable implements Observer {
                 fifoEvent.add(event);
             }
         }
+        //double fin = System.nanoTime();
+
+        //System.out.println("time elapsed (sec) : "+(fin-debut)/Math.pow(10,9));
     }
 
 
@@ -172,15 +179,21 @@ public class Controleur extends Observable implements Observer {
     //Vérifie si on peut ajouer un véhicule à une voie.
     private void verifAjoutVoie(ConcurrentLinkedQueue<Vehicule> voie, String typeVehicule){
 
+        int voiePrev = 0;
+        if(voie.equals(modele.getVhVoie1())) voiePrev = 1;
+        else if(voie.equals(modele.getVhVoie2())) voiePrev = 2;
+        else if(voie.equals(modele.getVhVoie3())) voiePrev = 3;
+        else if(voie.equals(modele.getVhVoie4())) voiePrev = 4;
 
-        if(voie == null || fifoEvent == null) return;
+
+        if(fifoEvent == null) return;
 
         //S'il reste de la place dans la voie, on demande au modèle d'ajouter à la voie un nouveau véhicule du type demandé (par défaut une voiture).
-        if (voie.size() < 5) {
+        if (voie.size() < Const.NB_MAX_VOIE) {
             switch (typeVehicule) {
                 case "voitureSortie1":
                     setChanged();
-                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-1, 1), voie), "ajout"));
+                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-voiePrev, 1), voie), "ajout"));
                     if (voie.size() == 1) {    //Si le nouvel arrivant est le seul à circuler sur la voie, alors on vérifie s'il peut s'engager dans le rond-point.
                         EventRP rp = new EventRP(voie, "insertion");
                         fifoEvent.add(rp);
@@ -190,7 +203,7 @@ public class Controleur extends Observable implements Observer {
 
                 case "voitureSortie2":
                     setChanged();
-                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-1, 2), voie), "ajout"));
+                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-voiePrev, 2), voie), "ajout"));
                     if (voie.size() == 1) {    //Si le nouvel arrivant est le seul à circuler sur la voie, alors on vérifie s'il peut s'engager dans le rond-point.
                         EventRP rp = new EventRP(voie, "insertion");
                         fifoEvent.add(rp);
@@ -200,7 +213,7 @@ public class Controleur extends Observable implements Observer {
 
                 case "voitureSortie3":
                     setChanged();
-                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-1, 3), voie), "ajout"));
+                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-voiePrev, 3), voie), "ajout"));
                     if (voie.size() == 1) {    //Si le nouvel arrivant est le seul à circuler sur la voie, alors on vérifie s'il peut s'engager dans le rond-point.
                         EventRP rp = new EventRP(voie, "insertion");
                         fifoEvent.add(rp);
@@ -210,7 +223,7 @@ public class Controleur extends Observable implements Observer {
 
                 case "voitureSortie4":
                     setChanged();
-                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-1, 4), voie), "ajout"));
+                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-voiePrev, 4), voie), "ajout"));
                     if (voie.size() == 1) {    //Si le nouvel arrivant est le seul à circuler sur la voie, alors on vérifie s'il peut s'engager dans le rond-point.
                         EventRP rp = new EventRP(voie, "insertion");
                         fifoEvent.add(rp);

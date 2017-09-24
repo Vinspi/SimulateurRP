@@ -11,8 +11,8 @@ public class Hand {
 
 
 
-        VueRP4 vue = new VueRP4();
+        VueRP4 vue = new VueRP4(controleur);
 
-        vue.addObserver(controleur);
+        modele.addObserver(vue);
     }
 }

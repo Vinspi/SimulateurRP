@@ -18,13 +18,13 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     private Jcanvas canvas;
     private JPanel panelGeneral;
     private JPanel panelBoutons;
-    private BorderLayout layoutgeneral;
-    private BorderLayout layoutBoutons;
-
-    public VueRP4() throws HeadlessException {
 
 
-        this.layoutgeneral = new BorderLayout();
+
+    public VueRP4(Observer obs) throws HeadlessException {
+
+
+        this.addObserver(obs);
 
         this.ajouteVoieSud = new JButton("voie Sud");
         this.ajouteVoieSud.setName(Const.ADD_Vehicule_V1_To_V1);
@@ -49,7 +49,9 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.panelBoutons.add(ajouteVoieOuest);
 
 
-        this.canvas = new Jcanvas();
+
+
+        this.canvas = new Jcanvas(800,800);
 
         this.panelGeneral = new JPanel();
 
@@ -57,16 +59,54 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.panelGeneral.add(canvas, BorderLayout.CENTER);
         this.panelGeneral.add(panelBoutons,BorderLayout.EAST);
 
+
+
+        this.panelGeneral.setSize(canvas.getHeight()+panelBoutons.getHeight(),canvas.getWidth()+panelBoutons.getWidth());
+
+
         this.fenetre = new JFrame("Simulateur Rond-point 4 voies");
-        this.fenetre.setSize(800,600);
+        this.fenetre.setSize(915,800);
         this.fenetre.setVisible(true);
         this.fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.fenetre.getContentPane().add(panelGeneral);
+
+        this.fenetre.repaint();
+
     }
+
+
 
     @Override
     public void update(Observable observable, Object o) {
+
+        if(o instanceof EventRP){
+            EventRP event = (EventRP) o;
+            Vehicule vehicule;
+            Controleur.CoupleVV coupleVV;
+
+            switch (event.event){
+                case "ajout":
+                    coupleVV = (Controleur.CoupleVV) (event.o);
+                    this.canvas.addDrawable((Vehicule) coupleVV.o);
+                    this.canvas.repaint();
+                    break;
+                case "deplacement":
+                    double debut = System.nanoTime();
+                    this.canvas.repaint();
+                    double fin = System.nanoTime();
+                    break;
+                case "sortie":
+                    System.out.println("evenement de sortie");
+                    vehicule = ((Vehicule) event.o);
+                    this.canvas.removeDrawable(vehicule);
+                    this.canvas.repaint();
+                    break;
+
+
+
+            }
+        }
 
     }
 
@@ -74,6 +114,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     public void actionPerformed(ActionEvent e) {
         String BTN_NAME = ((JButton) e.getSource()).getName();
         setChanged();
+        System.out.println("BTN_NAME : "+BTN_NAME);
         notifyObservers(BTN_NAME);
     }
 }

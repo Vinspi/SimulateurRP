@@ -31,4 +31,6 @@ public class Const {
 
     public static final String ADD_Vehicule_V5 = "AV_V5";
 
+    public static final int NB_MAX_VOIE = 5;
+
 }

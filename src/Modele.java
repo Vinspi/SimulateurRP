@@ -74,11 +74,11 @@ public class Modele extends Observable implements Observer {
     }
 
     public Modele(){
-        vhVoie1 = null;
-        vhVoie2 = null;
-        vhVoie3 = null;
-        vhVoie4 = null;
-        vhRP = null;
+        vhVoie1 = new ConcurrentLinkedQueue<>();
+        vhVoie2 = new ConcurrentLinkedQueue<>();
+        vhVoie3 = new ConcurrentLinkedQueue<>();
+        vhVoie4 = new ConcurrentLinkedQueue<>();
+        vhRP = new ArrayList<>();
     }
 
 
@@ -86,6 +86,7 @@ public class Modele extends Observable implements Observer {
     void addVehiculeToVoie(Vehicule vh, ConcurrentLinkedQueue<Vehicule> voie){
 
         voie.add(vh);
+        System.out.println("Voiture ajouté à la voie");
     }
 
 
@@ -122,6 +123,8 @@ public class Modele extends Observable implements Observer {
         //On le retire du fifo de sa voie.
         vhVoie.poll();
 
+        System.out.println("Voiture ajouté au RP");
+
     }
 
 
@@ -130,7 +133,6 @@ public class Modele extends Observable implements Observer {
     @Override
     public void update(Observable observable, Object o) {
 
-        setChanged();
-        notifyObservers();
+        System.out.println("coucou");
     }
 }

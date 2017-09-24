@@ -10,8 +10,10 @@ public class Hand {
         Controleur controleur = new Controleur(modele);
 
 
-        VueRP4 vue = new VueRP4();
+        //VueRP4 vue = new VueRP4();
 
+
+        controleur.update(controleur,"voie1Voiture");
 
     }
 }

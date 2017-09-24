@@ -104,15 +104,19 @@ public class Modele extends Observable implements Observer {
             posInit = 25;
             vhVoie = vhVoie2;
 
+
         }
         else if (voie.equals(vhVoie3)){
             posInit = 50;
             vhVoie = vhVoie3;
+
         }
         else if (voie.equals(vhVoie4)){
             posInit = 75;
             vhVoie = vhVoie4;
+
         }
+
 
         //On place le véhicule dans le rond-point.
 
@@ -123,9 +127,12 @@ public class Modele extends Observable implements Observer {
         }
 
         //On le retire du fifo de sa voie.
+
         vhVoie.poll();
 
         System.out.println("------------ Véhicule inséré dans le rond-point.--------------");
+
+
 
     }
 
@@ -136,24 +143,31 @@ public class Modele extends Observable implements Observer {
     @SuppressWarnings("unchecked")
     public void update(Observable observable, Object o) {
 
-
         if(o instanceof EventRP){
 
             switch (((EventRP) o).event) {
                 case "ajout":
                     addVehiculeToVoie(((Vehicule) ((Controleur.CoupleVV) ((EventRP) o).o).o), ((Controleur.CoupleVV) ((EventRP) o).o).voie);
+
+                    setChanged();
+                    notifyObservers(new EventRP((Controleur.CoupleVV) ((EventRP) o).o, "ajout"));
+
                     break;
 
                 case "deplacement":
                     rondpoint[Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + ((Vehicule) ((EventRP) o).o).getTaille(), 100)] = ((Vehicule) ((EventRP) o).o);
                     rondpoint[((Vehicule) ((EventRP) o).o).getPos()] = null;
                     ((Vehicule) ((EventRP) o).o).setPos(Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + 1, 100));
+                    setChanged();
+                    notifyObservers(o);
                     break;
 
                 case "sortie":
                     for (int i = 0; i < ((Vehicule) ((EventRP) o).o).getTaille(); i++) {
                         rondpoint[((Vehicule) ((EventRP) o).o).getPos() + i] = null;
                     }
+                    setChanged();
+                    notifyObservers(o);
                     break;
 
                 default:
@@ -169,7 +183,6 @@ public class Modele extends Observable implements Observer {
 
 
 
-        setChanged();
-        notifyObservers();
+
     }
 }

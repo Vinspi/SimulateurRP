@@ -34,23 +34,25 @@ public class Controleur extends Observable implements Observer {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run(){
-                System.out.println("[Clock] Nombre d'elements dans FifoEvent :" + fifoEvent.size());
-                System.out.println("[Clock] Nombre de voitures circulant dans le rond-point :" + modele.getVhRP().size());
-                for(Vehicule v : modele.getVhRP()){
+                //System.out.println("[Clock] Nombre d'elements dans FifoEvent :" + fifoEvent.size());
+                //System.out.println("[Clock] Nombre de voitures circulant dans le rond-point :" + modele.getVhRP().size());
+                /*for(Vehicule v : modele.getVhRP()){
                     System.out.print("| "+v.getPos() + " ");
-                }
-                System.out.println();
+                }*/
+                //System.out.println();
                 verifFifoEvent();
             }
         };
 
 
-        timer.schedule(timerTask,0, 1000);
+        timer.schedule(timerTask,0, 30);
     }
 
 
     @SuppressWarnings("unchecked")
     private void verifFifoEvent() {
+
+        //double debut = System.nanoTime();
 
         int size = fifoEvent.size();
         ConcurrentLinkedQueue<EventRP> tmp = new ConcurrentLinkedQueue<>();  //Fifo dans laquelle on place les potentielles nouvelles demandes d'insertion reçues après l'insertion des véhicules des différentes voies.
@@ -124,6 +126,9 @@ public class Controleur extends Observable implements Observer {
                 fifoEvent.add(event);
             }
         }
+        //double fin = System.nanoTime();
+
+        //System.out.println("time elapsed (sec) : "+(fin-debut)/Math.pow(10,9));
     }
 
 

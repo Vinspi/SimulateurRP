@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.VolatileImage;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -32,9 +33,10 @@ public class Voiture extends Vehicule {
     public Voiture(int posInit, int sortiePrevue){
         this.pos = posInit;
         this.sortiePrevue = sortiePrevue;
-        this.taille = 2;
+        this.taille = 7;
         try {
             this.imgVoiture = ImageIO.read(new FileInputStream("voiture.png"));
+
             this.imgVoiture = this.imgVoiture.getScaledInstance(30,60, Image.SCALE_SMOOTH);
         }
         catch (IOException e){

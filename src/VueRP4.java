@@ -20,10 +20,11 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     private JPanel panelBoutons;
 
 
-    public VueRP4() throws HeadlessException {
+
+    public VueRP4(Observer obs) throws HeadlessException {
 
 
-
+        this.addObserver(obs);
 
         this.ajouteVoieSud = new JButton("voie Sud");
         this.ajouteVoieSud.setName(Const.ADD_Vehicule_V1_To_V1);
@@ -70,10 +71,42 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
         this.fenetre.getContentPane().add(panelGeneral);
 
+        this.fenetre.repaint();
+
     }
+
+
 
     @Override
     public void update(Observable observable, Object o) {
+
+        if(o instanceof EventRP){
+            EventRP event = (EventRP) o;
+            Vehicule vehicule;
+            Controleur.CoupleVV coupleVV;
+
+            switch (event.event){
+                case "ajout":
+                    coupleVV = (Controleur.CoupleVV) (event.o);
+                    this.canvas.addDrawable((Vehicule) coupleVV.o);
+                    this.canvas.repaint();
+                    break;
+                case "deplacement":
+                    double debut = System.nanoTime();
+                    this.canvas.repaint();
+                    double fin = System.nanoTime();
+                    break;
+                case "sortie":
+                    System.out.println("evenement de sortie");
+                    vehicule = ((Vehicule) event.o);
+                    this.canvas.removeDrawable(vehicule);
+                    this.canvas.repaint();
+                    break;
+
+
+
+            }
+        }
 
     }
 
@@ -81,6 +114,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     public void actionPerformed(ActionEvent e) {
         String BTN_NAME = ((JButton) e.getSource()).getName();
         setChanged();
+        System.out.println("BTN_NAME : "+BTN_NAME);
         notifyObservers(BTN_NAME);
     }
 }

@@ -14,11 +14,14 @@ public class Jcanvas extends JPanel {
 
     private LinkedList<Drawable> drawables;
     private Image backgroundImage;
+    public int nbVehiculeVoie1 = 0;
+    public int nbVehiculeVoie2 = 0;
+    public int nbVehiculeVoie3 = 0;
+    public int nbVehiculeVoie4 = 0;
 
 
     public Jcanvas(int sizeW, int sizeH) {
         this.drawables = new LinkedList<>();
-        this.drawables.add(new Voiture(100,2));
         this.setSize(sizeW,sizeH);
         try {
             this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP4_Background));
@@ -32,13 +35,24 @@ public class Jcanvas extends JPanel {
 
     }
 
+    public void addDrawable(Drawable d){
+        this.drawables.add(d);
+    }
+
+    public void removeDrawable(Drawable d){
+        this.drawables.remove(d);
+    }
+
     @Override
     public void paint(Graphics graphics) {
-        System.out.println("paint !");
         super.paint(graphics);
+
 
         graphics.drawImage(this.backgroundImage, 0, 0, null);
 
+        for (int i=0;i<nbVehiculeVoie1;i++){
+
+        }
 
         for(Drawable d : drawables)
             d.draw(graphics);

@@ -22,6 +22,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     private String[] s = {"SUD","EST","NORD","OUEST"};
     private JPanel choixSortie;
     private JSlider sliderTolerance;
+    private JButton play_pause;
 
 
 
@@ -30,8 +31,8 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
 
         this.addObserver(obs);
-
-        this.sliderTolerance = new JSlider(0,100);
+        this.play_pause = new JButton("Pause");
+        this.sliderTolerance = new JSlider(5,100);
         this.sliderTolerance.setMajorTickSpacing(25);
         this.sliderTolerance.setMinorTickSpacing(5);
         this.sliderTolerance.setPaintTicks(true);
@@ -65,6 +66,10 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.choixSortie.add(comboBox);
         this.choixSortie.add(new JLabel("Tolérance"));
         this.choixSortie.add(sliderTolerance);
+        this.play_pause.setName("play_pause");
+        this.play_pause.addActionListener(this);
+        this.panelBoutons.add(play_pause);
+
         this.panelBoutons.add(choixSortie);
 
 
@@ -132,9 +137,21 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String BTN_NAME = ((JButton) e.getSource()).getName();
-        setChanged();
         System.out.println("BTN_NAME : "+BTN_NAME);
-        System.out.println("   "+this.sliderTolerance.getValue());
-        notifyObservers(new EventRP(this.sliderTolerance.getValue(),BTN_NAME+"_V"+(this.comboBox.getSelectedIndex()+1)));
+        System.out.println("Tolerance : "+this.sliderTolerance.getValue());
+        if(BTN_NAME.equals("play_pause")){
+            setChanged();
+            notifyObservers("play_pause");
+            if(this.play_pause.getText().equals("Pause")){
+                this.play_pause.setText("Play");
+            }
+            else {
+                this.play_pause.setText("Pause");
+            }
+        }
+        else {
+            setChanged();
+            notifyObservers(new EventRP(this.sliderTolerance.getValue(), BTN_NAME + "_V" + (this.comboBox.getSelectedIndex() + 1)));
+        }
     }
 }

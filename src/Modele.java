@@ -13,6 +13,7 @@ public class Modele extends Observable implements Observer {
     private ConcurrentLinkedQueue<Vehicule> vhVoie2;
     private ConcurrentLinkedQueue<Vehicule> vhVoie3;
     private ConcurrentLinkedQueue<Vehicule> vhVoie4;
+    private boolean runAnim = true;
 
     private ArrayList<Vehicule> vhRP;
     private Vehicule rondpoint[] = new Vehicule[100]; //Taille fixé à 100 pour le moment.
@@ -21,7 +22,9 @@ public class Modele extends Observable implements Observer {
     //Fixé à 25 (1/4 du rond-point) pour le moment.
     private int tolerance = 25;
 
-
+    public void switchPlayPause(){
+        this.runAnim = !this.runAnim;
+    }
 
     public ConcurrentLinkedQueue<Vehicule> getVhVoie1() {
         return vhVoie1;
@@ -164,11 +167,13 @@ public class Modele extends Observable implements Observer {
                     break;
 
                 case "deplacement":
-                    rondpoint[Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + ((Vehicule) ((EventRP) o).o).getTaille(), 100)] = ((Vehicule) ((EventRP) o).o);
-                    rondpoint[((Vehicule) ((EventRP) o).o).getPos()] = null;
-                    ((Vehicule) ((EventRP) o).o).setPos(Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + 1, 100));
-                    setChanged();
-                    notifyObservers(o);
+                    if(runAnim) {
+                        rondpoint[Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + ((Vehicule) ((EventRP) o).o).getTaille(), 100)] = ((Vehicule) ((EventRP) o).o);
+                        rondpoint[((Vehicule) ((EventRP) o).o).getPos()] = null;
+                        ((Vehicule) ((EventRP) o).o).setPos(Math.floorMod(((Vehicule) ((EventRP) o).o).getPos() + 1, 100));
+                        setChanged();
+                        notifyObservers(o);
+                    }
                     break;
 
                 case "sortie":

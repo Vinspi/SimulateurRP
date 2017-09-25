@@ -75,7 +75,6 @@ public abstract class Vehicule implements Drawable{
         }
         if(pos < 0){
 
-            System.out.println("pos : "+this.pos);
 
             switch (pos){
                 /* voie du bas */

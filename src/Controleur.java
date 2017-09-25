@@ -152,7 +152,7 @@ public class Controleur extends Observable implements Observer {
 
         }
         else if (voie.equals(modele.getVhVoie4())){
-            posInit = 100;
+            posInit = 75;
         }
 
         boolean passagePossible = true;
@@ -264,91 +264,97 @@ public class Controleur extends Observable implements Observer {
 
         System.out.println("\n[C-Event] Observable updated -> " +  observable.getClass().getName());
 
-        EventRP event = (EventRP) o;
-        int tolerance = (int) event.o;
-        modele.setTolerance(tolerance);
-        switch(event.event){
+        if(o instanceof EventRP) {
+            EventRP event = (EventRP) o;
+            int tolerance = (int) event.o;
+            modele.setTolerance(tolerance);
+            switch (event.event) {
 
-            //Ajout dans voie1 vers les 4 autres voies :
-            case Const.ADD_Vehicule_V1_To_V1:
-                System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 1\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(),"voitureSortie1"));
-                break;
-            case Const.ADD_Vehicule_V1_To_V2:
-                System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 2\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(),"voitureSortie2"));
-                break;
-            case Const.ADD_Vehicule_V1_To_V3:
-                System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 3\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(),"voitureSortie3"));
-                break;
-            case Const.ADD_Vehicule_V1_To_V4:
-                System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 4\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(),"voitureSortie4"));
-                break;
-
-
-            //Ajout dans voie2 vers les 4 autres voies :
-            case Const.ADD_Vehicule_V2_To_V1:
-                System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 1\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(),"voitureSortie1"));
-                break;
-            case Const.ADD_Vehicule_V2_To_V2:
-                System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 2\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(),"voitureSortie2"));
-                break;
-            case Const.ADD_Vehicule_V2_To_V3:
-                System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 3\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(),"voitureSortie3"));
-                break;
-            case Const.ADD_Vehicule_V2_To_V4:
-                System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 4\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(),"voitureSortie4"));
-                break;
+                //Ajout dans voie1 vers les 4 autres voies :
+                case Const.ADD_Vehicule_V1_To_V1:
+                    System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 1\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(), "voitureSortie1"));
+                    break;
+                case Const.ADD_Vehicule_V1_To_V2:
+                    System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 2\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(), "voitureSortie2"));
+                    break;
+                case Const.ADD_Vehicule_V1_To_V3:
+                    System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 3\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(), "voitureSortie3"));
+                    break;
+                case Const.ADD_Vehicule_V1_To_V4:
+                    System.out.println("[C-Event] Ajout véhicule en voie 1 vers la voie 4\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie1(), "voitureSortie4"));
+                    break;
 
 
-            //Ajout dans voie3 vers les 4 autres voies :
-            case Const.ADD_Vehicule_V3_To_V1:
-                System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 1\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(),"voitureSortie1"));
-                break;
-            case Const.ADD_Vehicule_V3_To_V2:
-                System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 2\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(),"voitureSortie2"));
-                break;
-            case Const.ADD_Vehicule_V3_To_V3:
-                System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 3\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(),"voitureSortie3"));
-                break;
-            case Const.ADD_Vehicule_V3_To_V4:
-                System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 4\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(),"voitureSortie4"));
-                break;
+                //Ajout dans voie2 vers les 4 autres voies :
+                case Const.ADD_Vehicule_V2_To_V1:
+                    System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 1\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(), "voitureSortie1"));
+                    break;
+                case Const.ADD_Vehicule_V2_To_V2:
+                    System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 2\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(), "voitureSortie2"));
+                    break;
+                case Const.ADD_Vehicule_V2_To_V3:
+                    System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 3\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(), "voitureSortie3"));
+                    break;
+                case Const.ADD_Vehicule_V2_To_V4:
+                    System.out.println("[C-Event] Ajout véhicule en voie 2 vers la voie 4\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie2(), "voitureSortie4"));
+                    break;
 
 
+                //Ajout dans voie3 vers les 4 autres voies :
+                case Const.ADD_Vehicule_V3_To_V1:
+                    System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 1\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(), "voitureSortie1"));
+                    break;
+                case Const.ADD_Vehicule_V3_To_V2:
+                    System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 2\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(), "voitureSortie2"));
+                    break;
+                case Const.ADD_Vehicule_V3_To_V3:
+                    System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 3\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(), "voitureSortie3"));
+                    break;
+                case Const.ADD_Vehicule_V3_To_V4:
+                    System.out.println("[C-Event] Ajout véhicule en voie 3 vers la voie 4\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie3(), "voitureSortie4"));
+                    break;
 
-            //Ajout dans voie4 vers les 4 autres voies :
-            case Const.ADD_Vehicule_V4_To_V1:
-                System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 1\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(),"voitureSortie1"));
-                break;
-            case Const.ADD_Vehicule_V4_To_V2:
-                System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 2\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(),"voitureSortie2"));
-                break;
-            case Const.ADD_Vehicule_V4_To_V3:
-                System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 3\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(),"voitureSortie3"));
-                break;
-            case Const.ADD_Vehicule_V4_To_V4:
-                System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 4\n");
-                if(fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(),"voitureSortie4"));
-                break;
+
+                //Ajout dans voie4 vers les 4 autres voies :
+                case Const.ADD_Vehicule_V4_To_V1:
+                    System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 1\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(), "voitureSortie1"));
+                    break;
+                case Const.ADD_Vehicule_V4_To_V2:
+                    System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 2\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(), "voitureSortie2"));
+                    break;
+                case Const.ADD_Vehicule_V4_To_V3:
+                    System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 3\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(), "voitureSortie3"));
+                    break;
+                case Const.ADD_Vehicule_V4_To_V4:
+                    System.out.println("[C-Event] Ajout véhicule en voie 4 vers la voie 4\n");
+                    if (fifoEvent != null) fifoEvent.add(new EventRP(modele.getVhVoie4(), "voitureSortie4"));
+                    break;
 
 
-            default:
-                System.out.println("Erreur quelque part");
-                break;
+                default:
+                    System.out.println("Erreur quelque part");
+                    break;
+            }
+        }
+        else if (o instanceof String){
+            if(((String) o).equals("play_pause")){
+                modele.switchPlayPause();
+            }
         }
     }
 

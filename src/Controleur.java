@@ -264,7 +264,10 @@ public class Controleur extends Observable implements Observer {
 
         System.out.println("\n[C-Event] Observable updated -> " +  observable.getClass().getName());
 
-        switch((String)o){
+        EventRP event = (EventRP) o;
+        int tolerance = (int) event.o;
+        modele.setTolerance(tolerance);
+        switch(event.event){
 
             //Ajout dans voie1 vers les 4 autres voies :
             case Const.ADD_Vehicule_V1_To_V1:

@@ -25,4 +25,9 @@ public class EventRP {
         this.o = coupleVV;
         this.event = event;
     }
+
+    public EventRP(int tolerance, String event){
+        this.o = tolerance;
+        this.event = event;
+    }
 }

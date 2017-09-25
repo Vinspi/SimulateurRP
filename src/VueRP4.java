@@ -21,6 +21,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     private JComboBox comboBox;
     private String[] s = {"SUD","EST","NORD","OUEST"};
     private JPanel choixSortie;
+    private JSlider sliderTolerance;
 
 
 
@@ -30,6 +31,12 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
         this.addObserver(obs);
 
+        this.sliderTolerance = new JSlider(0,100);
+        this.sliderTolerance.setMajorTickSpacing(25);
+        this.sliderTolerance.setMinorTickSpacing(5);
+        this.sliderTolerance.setPaintTicks(true);
+        this.sliderTolerance.setPaintLabels(true);
+        this.sliderTolerance.setValue(25);
         this.comboBox = new JComboBox(s);
         this.choixSortie = new JPanel();
         this.ajouteVoieSud = new JButton("voie Sud");
@@ -53,8 +60,11 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.panelBoutons.add(ajouteVoieNord);
         this.panelBoutons.add(ajouteVoieEst);
         this.panelBoutons.add(ajouteVoieOuest);
+        this.choixSortie.setLayout(new GridLayout(0,1));
         this.choixSortie.add(new JLabel("sortie"));
         this.choixSortie.add(comboBox);
+        this.choixSortie.add(new JLabel("Tolérance"));
+        this.choixSortie.add(sliderTolerance);
         this.panelBoutons.add(choixSortie);
 
 
@@ -125,6 +135,6 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         setChanged();
         System.out.println("BTN_NAME : "+BTN_NAME);
 
-        notifyObservers(BTN_NAME+"_V"+(this.comboBox.getSelectedIndex()+1));
+        notifyObservers(new EventRP(this.sliderTolerance.getValue(),BTN_NAME+"_V"+(this.comboBox.getSelectedIndex()+1)));
     }
 }

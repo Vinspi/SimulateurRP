@@ -60,6 +60,7 @@ public class Modele extends Observable implements Observer {
     }
 
 
+
     public ArrayList<Vehicule> getVhRP() {
         return vhRP;
     }

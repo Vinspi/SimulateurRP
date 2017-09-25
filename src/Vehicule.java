@@ -34,6 +34,7 @@ public abstract class Vehicule implements Drawable{
 
         g2d.translate(405, 405);
         af = new AffineTransform();
+        int posfifo;
 
         if(this.pos > -1) {
             af.translate(imgVoiture.getHeight(null) / 2, -imgVoiture.getWidth(null) / 2);
@@ -72,15 +73,133 @@ public abstract class Vehicule implements Drawable{
             g2d.drawImage(imgVoiture, af, null);
 
         }
-        if(pos > -11 && pos < 0){
+        if(pos < 0){
+
+            System.out.println("pos : "+this.pos);
+
+            switch (pos){
+                /* voie du bas */
+                case -1:
+                    /* premiere pos file 1*/
+                    af.translate(12, 180);
+                    break;
+                case -2:
+                    /* deuxieme voiture file 1 */
+                    af.translate(12,180+63);
+                    break;
+                case -3:
+                    /* deuxieme voiture file 1 */
+                    af.translate(12,180+2*63);
+                    break;
+                case -4:
+                    /* deuxieme voiture file 1 */
+                    af.translate(12,180+3*63);
+                    break;
+                case -5:
+                    /* deuxieme voiture file 1 */
+                    af.translate(12,180+4*63);
+                    break;
+                    /* voie de droite */
+                case -6:
+                    /* premiere pos file 1*/
+                    af.translate(185, -6);
+                    af.rotate(Math.toRadians(-90));
+
+                    break;
+                case -7:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(185+63, -6);
+                    af.rotate(Math.toRadians(-90));
+
+                    break;
+                case -8:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(185+2*63, -6);
+                    af.rotate(Math.toRadians(-90));
+
+                    break;
+                case -9:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(185+3*63,-6);
+                    af.rotate(Math.toRadians(-90));
+
+                    break;
+                case -10:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(185+4*63,-6);
+                    af.rotate(Math.toRadians(-90));
+
+                    break;
+                    /* voie du haut */
+                case -11:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(-7,-185);
+                    af.rotate(Math.toRadians(-180));
+
+                    break;
+
+                case -12:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(-7,-185-63);
+                    af.rotate(Math.toRadians(-180));
+
+                    break;
+                case -13:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(-7,-185-2*63);
+                    af.rotate(Math.toRadians(-180));
+
+                    break;
+                case -14:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(-7,-185-3*63);
+                    af.rotate(Math.toRadians(-180));
+
+                    break;
+                case -15:
+                    /* deuxieme voiture file 1 */
+
+                    af.translate(-7,-185-4*63);
+                    af.rotate(Math.toRadians(-180));
+
+                    break;
+                    /* voie de gauche */
+                case -16:
+                    af.translate(-185,10);
+                    af.rotate(Math.toRadians(90));
+                    break;
+                case -17:
+                    af.translate(-185-63,10);
+                    af.rotate(Math.toRadians(90));
+                    break;
+                case -18:
+                    af.translate(-185-2*63,10);
+                    af.rotate(Math.toRadians(90));
+                    break;
+                case -19:
+                    af.translate(-185-3*63,10);
+                    af.rotate(Math.toRadians(90));
+                    break;
+                case -20:
+                    af.translate(-185-4*63,10);
+                    af.rotate(Math.toRadians(90));
+                    break;
 
 
-            af.rotate(Math.toRadians(0));
-            for (int i=-11;i<0;i++) {
-                af.translate(12, 180+i*140);
-
-                g2d.drawImage(imgVoiture, af, null);
             }
+
+
+
+
+            g2d.drawImage(imgVoiture, af, null);
         }
         g2d.translate(-405, -405);
 

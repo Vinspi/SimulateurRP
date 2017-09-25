@@ -134,6 +134,10 @@ public class Modele extends Observable implements Observer {
 
         vhVoie.poll();
 
+        /* uniquement pour faire une jouli vue */
+        for(Vehicule v : vhVoie)
+            v.pos++;
+
         System.out.println("------------ Véhicule inséré dans le rond-point.--------------");
 
 

@@ -50,10 +50,7 @@ public class Jcanvas extends JPanel {
 
         graphics.drawImage(this.backgroundImage, 0, 0, null);
 
-        for (int i=0;i<nbVehiculeVoie1;i++){
-
-        }
-
+     
         for(Drawable d : drawables)
             d.draw(graphics);
     }

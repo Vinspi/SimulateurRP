@@ -31,6 +31,11 @@ public class Const {
 
     public static final String ADD_Vehicule_V5 = "AV_V5";
 
+    public static final String BUTTON_SUD = "AV_V1";
+    public static final String BUTTON_NORD = "AV_V3";
+    public static final String BUTTON_EST = "AV_V2";
+    public static final String BUTTON_OUEST = "AV_V4";
+
     public static final int NB_MAX_VOIE = 5;
 
 }

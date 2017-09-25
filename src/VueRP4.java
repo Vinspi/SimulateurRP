@@ -18,6 +18,10 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
     private Jcanvas canvas;
     private JPanel panelGeneral;
     private JPanel panelBoutons;
+    private JComboBox comboBox;
+    private String[] s = {"SUD","EST","NORD","OUEST"};
+    private JPanel choixSortie;
+
 
 
 
@@ -26,20 +30,22 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
         this.addObserver(obs);
 
+        this.comboBox = new JComboBox(s);
+        this.choixSortie = new JPanel();
         this.ajouteVoieSud = new JButton("voie Sud");
-        this.ajouteVoieSud.setName(Const.ADD_Vehicule_V1_To_V1);
+        this.ajouteVoieSud.setName(Const.BUTTON_SUD);
         this.ajouteVoieSud.addActionListener(this);
 
         this.ajouteVoieNord = new JButton("voie Nord");
-        this.ajouteVoieNord.setName(Const.ADD_Vehicule_V2_To_V2);
+        this.ajouteVoieNord.setName(Const.BUTTON_NORD);
         this.ajouteVoieNord.addActionListener(this);
 
         this.ajouteVoieEst = new JButton("voie Est");
-        this.ajouteVoieEst.setName(Const.ADD_Vehicule_V3_To_V3);
+        this.ajouteVoieEst.setName(Const.BUTTON_EST);
         this.ajouteVoieEst.addActionListener(this);
 
         this.ajouteVoieOuest = new JButton("voie Ouest");
-        this.ajouteVoieOuest.setName(Const.ADD_Vehicule_V4_To_V4);
+        this.ajouteVoieOuest.setName(Const.BUTTON_OUEST);
         this.ajouteVoieOuest.addActionListener(this);
 
         this.panelBoutons = new JPanel(new GridLayout(0,1));
@@ -47,6 +53,9 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.panelBoutons.add(ajouteVoieNord);
         this.panelBoutons.add(ajouteVoieEst);
         this.panelBoutons.add(ajouteVoieOuest);
+        this.choixSortie.add(new JLabel("sortie"));
+        this.choixSortie.add(comboBox);
+        this.panelBoutons.add(choixSortie);
 
 
 
@@ -115,6 +124,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         String BTN_NAME = ((JButton) e.getSource()).getName();
         setChanged();
         System.out.println("BTN_NAME : "+BTN_NAME);
-        notifyObservers(BTN_NAME);
+
+        notifyObservers(BTN_NAME+"_V"+(this.comboBox.getSelectedIndex()+1));
     }
 }

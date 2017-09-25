@@ -84,7 +84,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
 
         this.fenetre = new JFrame("Simulateur Rond-point 4 voies");
-        this.fenetre.setSize(915,800);
+        this.fenetre.setSize(995,800);
         this.fenetre.setVisible(true);
         this.fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -134,7 +134,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         String BTN_NAME = ((JButton) e.getSource()).getName();
         setChanged();
         System.out.println("BTN_NAME : "+BTN_NAME);
-
+        System.out.println("   "+this.sliderTolerance.getValue());
         notifyObservers(new EventRP(this.sliderTolerance.getValue(),BTN_NAME+"_V"+(this.comboBox.getSelectedIndex()+1)));
     }
 }

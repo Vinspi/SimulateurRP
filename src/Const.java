@@ -6,7 +6,7 @@ public class Const {
     public static final String RP1_Background = "extras/BG_RP1.png";
     public static final String RP2_Background = "extras/BG_RP2.png";
     public static final String RP3_Background = "extras/BG_RP3.png";
-    public static final String RP4_Background = "extras/BG_RP4.png";
+    public static final String RP4_Background = "src/img/BG_RP4.png";
     public static final String RP5_Background = "extras/BG_RP5.png";
 
     public static final String ADD_Vehicule_V1_To_V1 = "AV_V1_V1";

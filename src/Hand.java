@@ -1,17 +1,10 @@
-/**
- * Created by deutsch on 23/09/17.
- */
 public class Hand {
-
     public static void main(String[] args) {
 
-        Modele modele = new Modele();
+        Modele modele = new Modele(4);
         Controleur controleur = new Controleur(modele);
 
-
-
-
-        VueRP4 vue = new VueRP4(controleur);
+        VueRP3 vue = new VueRP3(controleur);
 
         modele.addObserver(vue);
     }

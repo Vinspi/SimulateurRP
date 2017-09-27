@@ -9,6 +9,7 @@ public abstract class Vehicule implements Drawable{
     protected int pos;
     protected int taille;
     protected int sortiePrevue;
+    protected int NbVoie;
     protected Image imgVoiture;
     private AffineTransform af;
 
@@ -30,6 +31,9 @@ public abstract class Vehicule implements Drawable{
 
     @Override
     public void draw(Graphics g) {
+        int r;
+        double alpha;
+
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.translate(405, 405);
@@ -77,100 +81,102 @@ public abstract class Vehicule implements Drawable{
 
 
             switch (pos){
-                /* voie du bas */
                 case -1:
-                    /* premiere pos file 1*/
-                    af.translate(12, 180);
+                    /* 1° pos file 1*/
+                    r = (int) Math.sqrt(10*10 + 185*185);
+                    alpha = ((360/NbVoie)*0)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha)));
                     break;
                 case -2:
-                    /* deuxieme voiture file 1 */
-                    af.translate(12,180+63);
+                    /* 2° voiture file 1 */
+                    r = (int) Math.sqrt(10*10 + 185*185);
+                    alpha = ((360/NbVoie)*0)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+63);
                     break;
                 case -3:
-                    /* deuxieme voiture file 1 */
-                    af.translate(12,180+2*63);
+                    /* 3° voiture file 1 */
+                    r = (int) Math.sqrt(10*10 + 185*185);
+                    alpha = ((360/NbVoie)*0)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+2*63);
                     break;
                 case -4:
-                    /* deuxieme voiture file 1 */
-                    af.translate(12,180+3*63);
+                    /* 4° voiture file 1 */
+                    r = (int) Math.sqrt(10*10 + 185*185);
+                    alpha = ((360/NbVoie)*0)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+3*63);
                     break;
                 case -5:
-                    /* deuxieme voiture file 1 */
-                    af.translate(12,180+4*63);
+                    /* 5° voiture file 1 */
+                    r = (int) Math.sqrt(10*10 + (185*185);
+                    alpha = ((360/NbVoie)*0)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+4*63);
                     break;
-                    /* voie de droite */
-                case -6:
-                    /* premiere pos file 1*/
-                    af.translate(185, -6);
-                    af.rotate(Math.toRadians(-90));
 
+
+                case -6:
+                    /* 1° pos file 2*/
+                    r = (int) Math.sqrt(185*185 + 10*10);
+                    alpha = ((360/NbVoie)*1)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha)));
+                    af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -7:
-                    /* deuxieme voiture file 1 */
-
-                    af.translate(185+63, -6);
-                    af.rotate(Math.toRadians(-90));
-
+                    /* 2° voiture file 2 */
+                    r = (int) Math.sqrt( + 6*6);
+                    alpha = ((360/NbVoie)*1)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha))+63,  r*Math.cos(Math.toRadians(alpha)));
+                    af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -8:
-                    /* deuxieme voiture file 1 */
-
-                    af.translate(185+2*63, -6);
-                    af.rotate(Math.toRadians(-90));
-
+                    /* 3° voiture file 2 */
+                    r = (int) Math.sqrt(185*185 + 6*6);
+                    alpha = ((360/NbVoie)*1)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha))+2*63, r*Math.cos(Math.toRadians(alpha)));
+                    af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -9:
-                    /* deuxieme voiture file 1 */
-
-                    af.translate(185+3*63,-6);
-                    af.rotate(Math.toRadians(-90));
-
+                    /* 4° voiture file 2 */
+                    r = (int) Math.sqrt(185*185 + 6*6);
+                    alpha = ((360/NbVoie)*1)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha))+3*63,r*Math.cos(Math.toRadians(alpha)));
+                    af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -10:
-                    /* deuxieme voiture file 1 */
-
-                    af.translate(185+4*63,-6);
-                    af.rotate(Math.toRadians(-90));
-
+                    /* 5° voiture file 2 */
+                    r = (int) Math.sqrt(185*185 + 6*6);
+                    alpha = ((360/NbVoie)*1)+3;
+                    af.translate(r*Math.sin(Math.toRadians(alpha))+4*63,r*Math.cos(Math.toRadians(alpha)));
+                    af.rotate(Math.toRadians(-360/NbVoie));
                     break;
-                    /* voie du haut */
+
+
                 case -11:
                     /* deuxieme voiture file 1 */
-
                     af.translate(-7,-185);
                     af.rotate(Math.toRadians(-180));
-
                     break;
-
                 case -12:
                     /* deuxieme voiture file 1 */
-
                     af.translate(-7,-185-63);
                     af.rotate(Math.toRadians(-180));
-
                     break;
                 case -13:
                     /* deuxieme voiture file 1 */
-
                     af.translate(-7,-185-2*63);
                     af.rotate(Math.toRadians(-180));
-
                     break;
                 case -14:
                     /* deuxieme voiture file 1 */
-
                     af.translate(-7,-185-3*63);
                     af.rotate(Math.toRadians(-180));
-
                     break;
                 case -15:
                     /* deuxieme voiture file 1 */
-
                     af.translate(-7,-185-4*63);
                     af.rotate(Math.toRadians(-180));
-
                     break;
-                    /* voie de gauche */
+
+
                 case -16:
                     af.translate(-185,10);
                     af.rotate(Math.toRadians(90));

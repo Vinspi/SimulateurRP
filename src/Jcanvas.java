@@ -7,9 +7,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.LinkedList;
 
-/**
- * Created by vinspi on 23/09/17.
- */
 public class Jcanvas extends JPanel {
 
     private LinkedList<Drawable> drawables;
@@ -18,16 +15,34 @@ public class Jcanvas extends JPanel {
     public int nbVehiculeVoie2 = 0;
     public int nbVehiculeVoie3 = 0;
     public int nbVehiculeVoie4 = 0;
+    public int nbVehiculeVoie5 = 0;
+    public int nbVehiculeVoie6 = 0;
 
 
-    public Jcanvas(int sizeW, int sizeH) {
+    public Jcanvas(int sizeW, int sizeH, int nbVoie) {
         this.drawables = new LinkedList<>();
         this.setSize(sizeW,sizeH);
         try {
-            this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP4_Background));
+            if(nbVoie == 3) {
+                this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP3_Background));
 
-            this.backgroundImage = this.backgroundImage.getScaledInstance(800,800,Image.SCALE_SMOOTH);
+                this.backgroundImage = this.backgroundImage.getScaledInstance(800, 800, Image.SCALE_SMOOTH);
+            }
+            else if(nbVoie == 4) {
+                this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP4_Background));
 
+                this.backgroundImage = this.backgroundImage.getScaledInstance(800, 800, Image.SCALE_SMOOTH);
+            }
+            else if(nbVoie == 5) {
+                this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP5_Background));
+
+                this.backgroundImage = this.backgroundImage.getScaledInstance(800, 800, Image.SCALE_SMOOTH);
+            }
+            else if(nbVoie == 6) {
+                this.backgroundImage = ImageIO.read(new FileInputStream(Const.RP6_Background));
+
+                this.backgroundImage = this.backgroundImage.getScaledInstance(800, 800, Image.SCALE_SMOOTH);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,7 +65,7 @@ public class Jcanvas extends JPanel {
 
         graphics.drawImage(this.backgroundImage, 0, 0, null);
 
-     
+
         for(Drawable d : drawables)
             d.draw(graphics);
     }

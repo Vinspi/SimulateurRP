@@ -4,16 +4,17 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/**
- * Created by deutsch on 23/09/17.
- */
 public class Modele extends Observable implements Observer {
 
     private ConcurrentLinkedQueue<Vehicule> vhVoie1;
     private ConcurrentLinkedQueue<Vehicule> vhVoie2;
     private ConcurrentLinkedQueue<Vehicule> vhVoie3;
     private ConcurrentLinkedQueue<Vehicule> vhVoie4;
+    private ConcurrentLinkedQueue<Vehicule> vhVoie5;
+    private ConcurrentLinkedQueue<Vehicule> vhVoie6;
     private boolean runAnim = true;
+
+    private int nbVoie;
 
     private ArrayList<Vehicule> vhRP;
     private Vehicule rondpoint[] = new Vehicule[100]; //Taille fixé à 100 pour le moment.
@@ -54,6 +55,20 @@ public class Modele extends Observable implements Observer {
         this.vhVoie4 = vhVoie4;
     }
 
+    public ConcurrentLinkedQueue<Vehicule> getVhVoie5() {
+        return vhVoie5;
+    }
+    public void setVhVoie5(ConcurrentLinkedQueue<Vehicule> vhVoie5) {
+        this.vhVoie5 = vhVoie5;
+    }
+
+    public ConcurrentLinkedQueue<Vehicule> getVhVoie6() {
+        return vhVoie6;
+    }
+    public void setVhVoie6(ConcurrentLinkedQueue<Vehicule> vhVoie6) {
+        this.vhVoie6 = vhVoie6;
+    }
+
 
     public Vehicule[] getRondpoint() {
         return rondpoint;
@@ -71,6 +86,10 @@ public class Modele extends Observable implements Observer {
         this.vhRP = vhRP;
     }
 
+    public int getNbVoie() {
+        return nbVoie;
+    }
+
     public int getTolerance() {
         return tolerance;
     }
@@ -78,12 +97,16 @@ public class Modele extends Observable implements Observer {
         this.tolerance = tolerance;
     }
 
-    public Modele(){
+    public Modele(int nb){
         vhVoie1 = new ConcurrentLinkedQueue<>();
         vhVoie2 = new ConcurrentLinkedQueue<>();
         vhVoie3 = new ConcurrentLinkedQueue<>();
         vhVoie4 = new ConcurrentLinkedQueue<>();
+        vhVoie5 = new ConcurrentLinkedQueue<>();
+        vhVoie6 = new ConcurrentLinkedQueue<>();
         vhRP = new ArrayList<>();
+
+        nbVoie = nb;
     }
 
 
@@ -98,31 +121,34 @@ public class Modele extends Observable implements Observer {
     }
 
 
-
     //Fait s'insérer le premier véhicule de la voie dans le rond-point.
     //Deux solutions afin de localiser le véhicule :
     // -> associer la pos -X au véhicule, avec X la première case sur laquelle le véhicule va passer en s'engageant dans le rond-point. /!\ A la fonction drawVehicule qui devra dessiner les vh des fifo en fonction de leur position dans la fifo et non de pos.
     // -> switch case sur les voies.
-    private void insérerVehiculeDansRP(ConcurrentLinkedQueue<Vehicule> voie){
-
-
+    private void insérerVehiculeDansRP(ConcurrentLinkedQueue<Vehicule> voie)
+    {
         int posInit = 0;
         ConcurrentLinkedQueue<Vehicule> vhVoie = vhVoie1;
+
         if (voie.equals(vhVoie2)){
-            posInit = 25;
+            posInit = 100/getNbVoie();
             vhVoie = vhVoie2;
-
-
         }
         else if (voie.equals(vhVoie3)){
-            posInit = 50;
+            posInit = (100/getNbVoie()) * 2;
             vhVoie = vhVoie3;
-
         }
         else if (voie.equals(vhVoie4)){
-            posInit = 75;
+            posInit = (100/getNbVoie()) * 3;
             vhVoie = vhVoie4;
-
+        }
+        else if (voie.equals(vhVoie5)){
+            posInit = (100/getNbVoie()) * 4;
+            vhVoie = vhVoie5;
+        }
+        else if (voie.equals(vhVoie6)){
+            posInit = (100/getNbVoie()) * 5;
+            vhVoie = vhVoie6;
         }
 
 
@@ -191,7 +217,7 @@ public class Modele extends Observable implements Observer {
             }
 
         }
-        else if (o.equals(vhVoie1) || o.equals(vhVoie2) || o.equals(vhVoie3) || o.equals(vhVoie4)){
+        else if (o.equals(vhVoie1) || o.equals(vhVoie2) || o.equals(vhVoie3) || o.equals(vhVoie4) || o.equals(vhVoie5) || o.equals(vhVoie6)){
             insérerVehiculeDansRP((ConcurrentLinkedQueue<Vehicule>)o);
         }
 

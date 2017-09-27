@@ -5,18 +5,20 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-public class VueRP4 extends Observable implements Observer, ActionListener{
+public class VueRP6 extends Observable implements Observer, ActionListener{
 
     private JButton ajouteVoie1;
     private JButton ajouteVoie2;
     private JButton ajouteVoie3;
     private JButton ajouteVoie4;
+    private JButton ajouteVoie5;
+    private JButton ajouteVoie6;
     private JFrame fenetre;
     private Jcanvas canvas;
     private JPanel panelGeneral;
     private JPanel panelBoutons;
     private JComboBox comboBox;
-    private String[] s = {"SUD","EST","NORD","OUEST"};
+    private String[] s = {"SUD","SUD-EST", "NORD-EST", "NORD","NORD-OUEST", "SUD-OUEST"};
     private JPanel choixSortie;
     private JSlider sliderTolerance;
     private JButton play_pause;
@@ -24,7 +26,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
 
 
-    public VueRP4(Observer obs) throws HeadlessException {
+    public VueRP6(Observer obs) throws HeadlessException {
 
 
         this.addObserver(obs);
@@ -41,23 +43,33 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
         this.ajouteVoie1.setName(Const.BUTTON_1);
         this.ajouteVoie1.addActionListener(this);
 
-        this.ajouteVoie2 = new JButton("voie Est");
+        this.ajouteVoie2 = new JButton("voie Sud-Est");
         this.ajouteVoie2.setName(Const.BUTTON_2);
         this.ajouteVoie2.addActionListener(this);
 
-        this.ajouteVoie3 = new JButton("voie Nord");
+        this.ajouteVoie3 = new JButton("voie Nord-Est");
         this.ajouteVoie3.setName(Const.BUTTON_3);
         this.ajouteVoie3.addActionListener(this);
 
-        this.ajouteVoie4 = new JButton("voie Ouest");
+        this.ajouteVoie4 = new JButton("voie Nord");
         this.ajouteVoie4.setName(Const.BUTTON_4);
         this.ajouteVoie4.addActionListener(this);
 
+        this.ajouteVoie5 = new JButton("voie Nord-Ouest");
+        this.ajouteVoie5.setName(Const.BUTTON_5);
+        this.ajouteVoie5.addActionListener(this);
+
+        this.ajouteVoie6 = new JButton("voie Sud-Ouest");
+        this.ajouteVoie6.setName(Const.BUTTON_6);
+        this.ajouteVoie6.addActionListener(this);
+
         this.panelBoutons = new JPanel(new GridLayout(0,1));
         this.panelBoutons.add(ajouteVoie1);
-        this.panelBoutons.add(ajouteVoie3);
         this.panelBoutons.add(ajouteVoie2);
+        this.panelBoutons.add(ajouteVoie3);
         this.panelBoutons.add(ajouteVoie4);
+        this.panelBoutons.add(ajouteVoie5);
+        this.panelBoutons.add(ajouteVoie6);
         this.choixSortie.setLayout(new GridLayout(0,1));
         this.choixSortie.add(new JLabel("sortie"));
         this.choixSortie.add(comboBox);
@@ -72,7 +84,7 @@ public class VueRP4 extends Observable implements Observer, ActionListener{
 
 
 
-        this.canvas = new Jcanvas(800,800,4);
+        this.canvas = new Jcanvas(800,800, 6);
 
         this.panelGeneral = new JPanel();
 

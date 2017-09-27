@@ -29,13 +29,15 @@ public class Voiture extends Vehicule {
         return taille;
     }
 
-    public Voiture(int posInit, int sortiePrevue){
+    public Voiture(int posInit, int sortiePrevue, int nombreDeVoie){
         int randomSkin = (int) (Math.random()*6);
         this.pos = posInit;
         this.sortiePrevue = sortiePrevue;
         this.taille = 7;
+        this.NbVoie = nombreDeVoie;
+
         try {
-            this.imgVoiture = ImageIO.read(new FileInputStream("src/img/voiture"+randomSkin+".png"));
+            this.imgVoiture = ImageIO.read(new FileInputStream("voiture"+randomSkin+".png"));
 
             this.imgVoiture = this.imgVoiture.getScaledInstance(30,60, Image.SCALE_SMOOTH);
         }

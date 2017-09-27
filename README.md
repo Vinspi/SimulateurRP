@@ -15,3 +15,4 @@ Projet de groupe réalisé dans le cadre de l'UE Génie logiciel en M1 informati
  ## Travail réalisé
  l'application est fonctionelle et répond aux besoins du client, voivi un screen du logiciel en fonction :
  
+ ![alt text](https://github.com/Vinspi/SimulateurRP/blob/master/extras/Capture%20du%202017-09-27%2018-55-55.png?raw=true)

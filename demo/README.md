@@ -18,8 +18,8 @@
 
 ##### Si vous rencontrez des erreurs avec le script, vous pouvez essayer les solutions suivantes #####
 
-##### - [ ] Rendre le script executable s'il ne l'est pas #####
+- [ ] Rendre le script executable s'il ne l'est pas
       chmod +x
 
-##### - [ ] Exécuter le script manuellement #####
+ - [ ] Exécuter le script manuellement 
       java -Dsun.java2d.opengl=true -jar sources/SimulateurRP_Project.jar

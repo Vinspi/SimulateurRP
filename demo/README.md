@@ -10,8 +10,11 @@
 
 ###  2. Décompresser l'archive
 
-###  3. Exécuter le script SimulateurRP.sh
+###  3. Exécuter le script ![SimulateurRP.sh](#)
 
+
+<br/>
+<br/>
 #### Si vous rencontrez des erreurs avec le script, vous pouvez essayer les solutions suivantes ####
 
 #### - Rendre le script executable s'il ne l'est pas ####

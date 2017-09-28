@@ -1,8 +1,8 @@
 # Simulateur de carrefour à sens giratoire
 Projet de groupe réalisé dans le cadre de l'UE Génie logiciel en M1 informatique (campus st Jérôme)
 
-* [Objectifs](##Objectifs)  
-* [Fonctionnalités](#Fonctionnalités)
+* [Objectifs](#objectifs)  
+* [Fonctionnalités](#fonctionnalites)
 * [Fonctionnalités à venir](#Fonctionnalites-a-venir)
 * [Travail réalisé](#travail-réalisé)
 * [Programme de démo](/demo)

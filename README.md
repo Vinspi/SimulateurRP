@@ -2,8 +2,8 @@
 Projet de groupe réalisé dans le cadre de l'UE Génie logiciel en M1 informatique (campus st Jérôme)
 
 * [Objectifs](#objectifs)  
-* [Fonctionnalités](#fonctionnalites)
-* [Fonctionnalités à venir](#Fonctionnalites-a-venir)
+* [Fonctionnalités](#fonctionnalités)
+* [Fonctionnalités à venir](#fonctionnalités-à-venir)
 * [Travail réalisé](#travail-réalisé)
 * [Programme de démo](/demo)
 

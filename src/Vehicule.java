@@ -31,7 +31,7 @@ public abstract class Vehicule implements Drawable{
 
     @Override
     public void draw(Graphics g) {
-        int r;
+        double rx, ry;
         double alpha;
 
         Graphics2D g2d = (Graphics2D) g;
@@ -83,120 +83,250 @@ public abstract class Vehicule implements Drawable{
             switch (pos){
                 case -1:
                     /* 1° pos file 1*/
-                    r = (int) Math.sqrt(10*10 + 185*185);
-                    alpha = ((360/NbVoie)*0)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha)));
+                    alpha = ((360/NbVoie)*0)+4;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx, ry);
                     break;
                 case -2:
                     /* 2° voiture file 1 */
-                    r = (int) Math.sqrt(10*10 + 185*185);
-                    alpha = ((360/NbVoie)*0)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+63);
+                    alpha = ((360/NbVoie)*0)+3.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+1*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+1*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx, ry);
                     break;
                 case -3:
                     /* 3° voiture file 1 */
-                    r = (int) Math.sqrt(10*10 + 185*185);
                     alpha = ((360/NbVoie)*0)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+2*63);
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+2*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+2*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx, ry);
                     break;
                 case -4:
                     /* 4° voiture file 1 */
-                    r = (int) Math.sqrt(10*10 + 185*185);
-                    alpha = ((360/NbVoie)*0)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+3*63);
+                    alpha = ((360/NbVoie)*0)+2.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+3*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+3*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx, ry);
                     break;
                 case -5:
                     /* 5° voiture file 1 */
-                    r = (int) Math.sqrt(10*10 + (185*185);
-                    alpha = ((360/NbVoie)*0)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha))+4*63);
+                    alpha = ((360/NbVoie)*0)+2;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+4*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+4*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx, ry);
                     break;
 
 
                 case -6:
                     /* 1° pos file 2*/
-                    r = (int) Math.sqrt(185*185 + 10*10);
-                    alpha = ((360/NbVoie)*1)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha)),  r*Math.cos(Math.toRadians(alpha)));
+                    alpha = ((360/NbVoie)*1)+4;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
                     af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -7:
                     /* 2° voiture file 2 */
-                    r = (int) Math.sqrt( + 6*6);
-                    alpha = ((360/NbVoie)*1)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha))+63,  r*Math.cos(Math.toRadians(alpha)));
+                    alpha = ((360/NbVoie)*1)+3.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+1*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+1*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
                     af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -8:
                     /* 3° voiture file 2 */
-                    r = (int) Math.sqrt(185*185 + 6*6);
                     alpha = ((360/NbVoie)*1)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha))+2*63, r*Math.cos(Math.toRadians(alpha)));
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+2*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+2*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
                     af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -9:
                     /* 4° voiture file 2 */
-                    r = (int) Math.sqrt(185*185 + 6*6);
-                    alpha = ((360/NbVoie)*1)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha))+3*63,r*Math.cos(Math.toRadians(alpha)));
+                    alpha = ((360/NbVoie)*1)+2.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+3*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+3*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
                     af.rotate(Math.toRadians(-360/NbVoie));
                     break;
                 case -10:
                     /* 5° voiture file 2 */
-                    r = (int) Math.sqrt(185*185 + 6*6);
-                    alpha = ((360/NbVoie)*1)+3;
-                    af.translate(r*Math.sin(Math.toRadians(alpha))+4*63,r*Math.cos(Math.toRadians(alpha)));
+                    alpha = ((360/NbVoie)*1)+2;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+4*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+4*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
                     af.rotate(Math.toRadians(-360/NbVoie));
                     break;
 
 
                 case -11:
-                    /* deuxieme voiture file 1 */
-                    af.translate(-7,-185);
-                    af.rotate(Math.toRadians(-180));
+                    /* 1° voiture file 3 */
+                    alpha = ((360/NbVoie)*2)+4;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*2));
                     break;
                 case -12:
-                    /* deuxieme voiture file 1 */
-                    af.translate(-7,-185-63);
-                    af.rotate(Math.toRadians(-180));
+                    /* 2° voiture file 3 */
+                    alpha = ((360/NbVoie)*2)+3.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+1*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+1*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*2));
                     break;
                 case -13:
-                    /* deuxieme voiture file 1 */
-                    af.translate(-7,-185-2*63);
-                    af.rotate(Math.toRadians(-180));
+                    /* 3° voiture file 3 */
+                    alpha = ((360/NbVoie)*2)+3;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+2*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+2*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*2));
                     break;
                 case -14:
-                    /* deuxieme voiture file 1 */
-                    af.translate(-7,-185-3*63);
-                    af.rotate(Math.toRadians(-180));
+                    /* 4° voiture file 3 */
+                    alpha = ((360/NbVoie)*2)+2.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+3*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+3*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*2));
                     break;
                 case -15:
-                    /* deuxieme voiture file 1 */
-                    af.translate(-7,-185-4*63);
-                    af.rotate(Math.toRadians(-180));
+                    /* 5° voiture file 3 */
+                    alpha = ((360/NbVoie)*2)+2;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+4*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+4*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*2));
                     break;
 
 
                 case -16:
-                    af.translate(-185,10);
-                    af.rotate(Math.toRadians(90));
+                    /* 1° voiture file 4 */
+                    alpha = ((360/NbVoie)*3)+4;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*3));
                     break;
                 case -17:
-                    af.translate(-185-63,10);
-                    af.rotate(Math.toRadians(90));
+                    /* 2° voiture file 4 */
+                    alpha = ((360/NbVoie)*3)+3.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+1*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+1*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*3));
                     break;
                 case -18:
-                    af.translate(-185-2*63,10);
-                    af.rotate(Math.toRadians(90));
+                    /* 3° voiture file 4 */
+                    alpha = ((360/NbVoie)*3)+3;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+2*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+2*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*3));
                     break;
                 case -19:
-                    af.translate(-185-3*63,10);
-                    af.rotate(Math.toRadians(90));
+                    /* 4° voiture file 4 */
+                    alpha = ((360/NbVoie)*3)+2.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+3*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+3*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*3));
                     break;
                 case -20:
-                    af.translate(-185-4*63,10);
-                    af.rotate(Math.toRadians(90));
+                    /* 5° voiture file 4 */
+                    alpha = ((360/NbVoie)*3)+2;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+4*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+4*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*3));
                     break;
+
+
+                case -21:
+                    /* 1° voiture file 5 */
+                    alpha = ((360/NbVoie)*4)+4;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*4));
+                    break;
+                case -22:
+                    /* 2° voiture file 5 */
+                    alpha = ((360/NbVoie)*4)+3.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+1*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+1*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*4));
+                    break;
+                case -23:
+                    /* 3° voiture file 5 */
+                    alpha = ((360/NbVoie)*4)+3;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+2*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+2*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*4));
+                    break;
+                case -24:
+                    /* 4° voiture file 5 */
+                    alpha = ((360/NbVoie)*4)+2.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+3*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+3*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*4));
+                    break;
+                case -25:
+                    /* 5° voiture file 5 */
+                    alpha = ((360/NbVoie)*4)+2;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+4*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+4*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*4));
+                    break;
+
+
+                case -26:
+                    /* 1° voiture file 6 */
+                    alpha = ((360/NbVoie)*5)+4;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*5));
+                    break;
+                case -27:
+                    /* 2° voiture file 6 */
+                    alpha = ((360/NbVoie)*5)+3.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+1*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+1*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*5));
+                    break;
+                case -28:
+                    /* 3° voiture file 6 */
+                    alpha = ((360/NbVoie)*5)+3;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+2*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+2*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*5));
+                    break;
+                case -29:
+                    /* 4° voiture file 6 */
+                    alpha = ((360/NbVoie)*5)+2.5;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+3*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+3*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*5));
+                    break;
+                case -30:
+                    /* 5° voiture file 6 */
+                    alpha = ((360/NbVoie)*5)+2;
+                    rx = (10 * Math.cos(Math.toRadians(alpha))) - ((185+4*63) * Math.sin(Math.toRadians(alpha)));
+                    ry = (10 * Math.sin(Math.toRadians(alpha))) + ((185+4*63) * Math.cos(Math.toRadians(alpha)));
+                    af.translate(-rx,  ry);
+                    af.rotate(Math.toRadians((-360/NbVoie)*5));
+                    break;
+
 
 
             }

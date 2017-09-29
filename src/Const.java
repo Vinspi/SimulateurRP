@@ -1,9 +1,9 @@
 public class Const {
 
-    public static final String RP3_Background = "extras/BG_RP3.png";
-    public static final String RP4_Background = "extras/BG_RP4.png";
-    public static final String RP5_Background = "extras/BG_RP5.png";
-    public static final String RP6_Background = "extras/BG_RP6.png";
+    public static final String RP3_Background = "src/img/BG_RP3.png";
+    public static final String RP4_Background = "src/img/BG_RP4.png";
+    public static final String RP5_Background = "src/img/BG_RP5.png";
+    public static final String RP6_Background = "src/img/BG_RP6.png";
 
     public static final String ADD_Vehicule_V1_To_V1 = "AV_V1_V1";
     public static final String ADD_Vehicule_V1_To_V2 = "AV_V1_V2";

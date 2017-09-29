@@ -79,7 +79,7 @@ public class VueRP3 extends Observable implements Observer, ActionListener{
         this.panelGeneral.setSize(canvas.getHeight()+panelBoutons.getHeight(),canvas.getWidth()+panelBoutons.getWidth());
 
 
-        this.fenetre = new JFrame("Simulateur Rond-point 4 voies");
+        this.fenetre = new JFrame("Simulateur Rond-point 3 voies");
         this.fenetre.setSize(995,800);
         this.fenetre.setVisible(true);
         this.fenetre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

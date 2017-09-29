@@ -37,7 +37,7 @@ public class Voiture extends Vehicule {
         this.NbVoie = nombreDeVoie;
 
         try {
-            this.imgVoiture = ImageIO.read(new FileInputStream("voiture"+randomSkin+".png"));
+            this.imgVoiture = ImageIO.read(new FileInputStream("src/img/voiture"+randomSkin+".png"));
 
             this.imgVoiture = this.imgVoiture.getScaledInstance(30,60, Image.SCALE_SMOOTH);
         }

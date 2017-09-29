@@ -198,6 +198,8 @@ public class Controleur extends Observable implements Observer {
         else if(voie.equals(modele.getVhVoie2())) voiePrev = 2;
         else if(voie.equals(modele.getVhVoie3())) voiePrev = 3;
         else if(voie.equals(modele.getVhVoie4())) voiePrev = 4;
+        else if(voie.equals(modele.getVhVoie5())) voiePrev = 5;
+        else if(voie.equals(modele.getVhVoie6())) voiePrev = 6;
 
 
         if(fifoEvent == null) return;
@@ -238,6 +240,26 @@ public class Controleur extends Observable implements Observer {
                 case "voitureSortie4":
                     setChanged();
                     notifyObservers(new EventRP(new CoupleVV(new Voiture(-voiePrev, 4, modele.getNbVoie()), voie), "ajout"));
+                    if (voie.size() == 1) {    //Si le nouvel arrivant est le seul à circuler sur la voie, alors on vérifie s'il peut s'engager dans le rond-point.
+                        EventRP rp = new EventRP(voie, "insertion");
+                        fifoEvent.add(rp);
+                        System.out.println("------------- Insertion " + rp.o + " ajouté à la fifo -----------");
+                    }
+                    break;
+
+                case "voitureSortie5":
+                    setChanged();
+                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-voiePrev, 5, modele.getNbVoie()), voie), "ajout"));
+                    if (voie.size() == 1) {    //Si le nouvel arrivant est le seul à circuler sur la voie, alors on vérifie s'il peut s'engager dans le rond-point.
+                        EventRP rp = new EventRP(voie, "insertion");
+                        fifoEvent.add(rp);
+                        System.out.println("------------- Insertion " + rp.o + " ajouté à la fifo -----------");
+                    }
+                    break;
+
+                case "voitureSortie6":
+                    setChanged();
+                    notifyObservers(new EventRP(new CoupleVV(new Voiture(-voiePrev, 6, modele.getNbVoie()), voie), "ajout"));
                     if (voie.size() == 1) {    //Si le nouvel arrivant est le seul à circuler sur la voie, alors on vérifie s'il peut s'engager dans le rond-point.
                         EventRP rp = new EventRP(voie, "insertion");
                         fifoEvent.add(rp);

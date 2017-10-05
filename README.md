@@ -7,7 +7,7 @@ Projet de groupe réalisé dans le cadre de l'UE Génie logiciel en M1 informati
 * [Travail réalisé](#travail-réalisé)
 * [Programme de démo](/demo)
 
-Vous pouvez également retrouver les spécificités du programme [ici](/doc/specificiteé_simulateurRP.pdf) et le cahier des charges [ici](/doc/Cahier des charges v2.pdf) 
+Vous pouvez également retrouver les spécificités du programme [ici](/doc/specificité_simulateurRP.pdf) et le cahier des charges [ici](/doc/Cahier\ des\ charges\ v2.pdf) 
 
 ## Objectifs ##
  * Réaliser un projet de groupe impliquant la rédaction d'un cahier des charges à partir des spécifications d'un client.
